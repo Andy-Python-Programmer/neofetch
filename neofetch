@@ -945,6 +945,7 @@ get_os() {
         AIX)      os=AIX ;;
         IRIX*)    os=IRIX ;;
         FreeMiNT) os=FreeMiNT ;;
+        aero)     os=Aero;;
 
         Linux|GNU*)
             os=Linux
@@ -1210,6 +1211,10 @@ get_distro() {
         FreeMiNT)
             distro=FreeMiNT
         ;;
+
+        Aero):
+            distro=Aero
+        ;;
     esac
 
     distro=${distro//Enterprise Server}
@@ -1355,6 +1360,10 @@ get_model() {
         FreeMiNT)
             model=$(sysctl -n hw.model)
             model=${model/ (_MCH *)}
+        ;;
+
+        Aero)
+            model="Unknown Model"
         ;;
     esac
 
@@ -8512,6 +8521,25 @@ o00.              k0O${c2}dddddd${c1}occ
        ..          ${c4}dxl     .xx;
                     :xxolldxd'
                       ;oxdl.
+EOF
+        ;;
+
+        "Aero"*)
+            # TODO: Add proper art
+            set_colors 2 1 3 5
+            read -rd '' ascii_data <<'EOF'
+    ,---,
+   '  .' \
+  /  ;    '.
+ :  :       \
+ :  |   /\   \
+ |  :  ' ;.   :
+ |  |  ;/  \   \
+ '  :  | \  \ ,'
+ |  |  '  '--'
+ |  :  :
+ |  | ,'
+ `--'',
 EOF
         ;;
 
